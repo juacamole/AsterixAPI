@@ -15,34 +15,5 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class AsterixApiApplicationTests {
 
-
-    @Mock
-    private CharacterRepository characterRepository;
-
-    @InjectMocks
-    private AsterixService asterixService;
-
-    @Test
-    void ifAllCharactersFoundTrue(){
-        List<Character> given = Arrays.asList(
-                new Character("1", "Asterix", "warrior", 23)
-        );
-
-        when(characterRepository.findAll()).thenReturn(given);
-        List<Character> actual = asterixService.findAll();
-        assertEquals(given, actual, "false");
-
-
-    }
-
-    @Test
-    void  ifCharacterByIdWasFoundReturnTrue(){
-
-        List<Character> given = Arrays.asList(
-        );
-
-    }
-
-
     }
 

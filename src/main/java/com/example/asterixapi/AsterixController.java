@@ -13,39 +13,22 @@ public class AsterixController {
 
     private final AsterixService service;
     @GetMapping
-    List<ApiCharacter> findAll() {
-        List<Character> charactersFromDatabase = service.findAll();
-        List<ApiCharacter>  charactersToReturn = new ArrayList<>();
-        for (Character character : charactersFromDatabase){
-            ApiCharacter x = new ApiCharacter(
-                    character.id(),
-                    character.name(),
-                    character.profession(),
-                    character.age()
-            );
-            charactersToReturn.add(x);
-        }
-        return charactersToReturn;
+    List<Character> findAll() {
+        return service.findAll();
     }
-    @PostMapping("/post")
-    public ApiCharacter createCharacter(@RequestBody ApiCharacter character) {
-        return null; //service.createCharacter(character);
+    @PutMapping("/{id}")
+    Character save(@PathVariable String id, @RequestBody Character newCharacter) {
+        return service.update(id, newCharacter);
     }
 
-    @PutMapping("/put/{id}")
-    public ApiCharacter updateCharacter(@PathVariable Long id, @RequestBody ApiCharacter character) {
-        return null;// service.updateCharacter(id, character);
+    @PostMapping("/{id}")
+    Character post(@PathVariable String id, @RequestBody Character newCharacter) {
+        return  service.save(id, newCharacter);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteCharacter(@PathVariable Long id) {
-        //service.deleteCharacter(id);
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable String id){
+        service.deleteById(id);
     }
-
-    @GetMapping("/{id}")
-    public ApiCharacter findCharacterById(@PathVariable Long id) {
-        return null;//service.findCharacterById(id);
-    }
-
 }
 

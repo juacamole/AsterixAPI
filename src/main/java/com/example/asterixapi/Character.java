@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public record Character(
         String id,
         String name,
-        String profession,
-        int age
+        String profession
 ) {
 }
