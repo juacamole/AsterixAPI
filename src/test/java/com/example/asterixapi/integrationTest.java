@@ -87,23 +87,4 @@ public class integrationTest {
                 );
     }
 
-    @Test
-    @DirtiesContext
-    void ifDeletedReturnNull() throws Exception{
-
-        mockMvc.perform(
-                MockMvcRequestBuilders.delete("/api/asterix/characters/3")
-        )
-                .andExpect(MockMvcResultMatchers.status().isOk());
-
-        mockMvc.perform(
-                MockMvcRequestBuilders.get("/api/asterix/characters/3")
-        )
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().json() """
-                
-                """);
-
-    }
-
 }
